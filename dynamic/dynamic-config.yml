@@ -1,5 +1,9 @@
 http:
   routers:
+    routers:
+      dashboard:
+        rule: Host(`${TRAEFIK_DASHBOARD_HOST}`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
+        service: api@internal
     easy-wms:
       entrypoints:
         - http
