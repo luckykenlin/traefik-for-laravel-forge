@@ -19,6 +19,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./letsencrypt:/letsencrypt
       - ./traefik.auth:/auth/traefik.auth
+      - ./traefik.yml:/traefik.yml:ro
+      - ./dynamic:/etc/traefik/dynamic
     command:
      # # Uncomment for debug
      # - --api.insecure=true
