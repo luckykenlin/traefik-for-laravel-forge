@@ -6,6 +6,8 @@ http:
         - "https"
       rule: "Host(`abc.lkkus.app`)"
       middlewares:
+        - gzip
+        - redirect-to-https
         - testHeader
       tls: {}
       service: easywms
@@ -16,7 +18,7 @@ http:
     easywms:
       loadBalancer:
         servers:
-          - url: "129.80.104.229"
+          - url: "http://129.80.104.229"
         passHostHeader: true
   #endregion
   middlewares:
@@ -26,7 +28,8 @@ http:
           X-Forwarded-Host: "wms.easywms.app" # Adds
         customResponseHeaders:
           X-Custom-Response-Header: "value" # Remove
-    https-redirectscheme:
+    redirect-to-https:
       redirectScheme:
         scheme: https
-        permanent: true
+    gzip:
+      compress: true
