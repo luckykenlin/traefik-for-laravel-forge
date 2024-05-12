@@ -6,7 +6,6 @@ http:
         - "https"
       rule: "Host(`abc.lkkus.app`)"
       middlewares:
-        - default-headers
         - https-redirectscheme
       tls: {}
       service: easywms
@@ -18,22 +17,10 @@ http:
       loadBalancer:
         servers:
           - url: "https://wms.easywms.app"
-        passHostHeader: false
+        passHostHeader: true
   #endregion
   middlewares:
     https-redirectscheme:
       redirectScheme:
         scheme: https
         permanent: true
-    default-headers:
-      headers:
-        frameDeny: true
-        browserXssFilter: true
-        contentTypeNosniff: true
-        forceSTSHeader: true
-        stsIncludeSubdomains: true
-        stsPreload: true
-        stsSeconds: 15552000
-        customFrameOptionsValue: SAMEORIGIN
-        customRequestHeaders:
-          X-Forwarded-Proto: https
