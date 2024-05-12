@@ -17,7 +17,7 @@ http:
       loadBalancer:
         servers:
           - url: "https://wms.easywms.app"
-        passHostHeader: true
+        passHostHeader: false
   #endregion
   middlewares:
     https-redirectscheme:
