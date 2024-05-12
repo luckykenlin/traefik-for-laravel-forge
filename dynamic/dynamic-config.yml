@@ -17,14 +17,14 @@ http:
     easywms:
       loadBalancer:
         servers:
-          - url: "https://wms.easywms.app"
+          - url: "https://httpbin.org"
         passHostHeader: true
   #endregion
   middlewares:
     testHeader:
       headers:
         customRequestHeaders:
-          X-Forwarded-Host: "wms.easywms.app" # Adds
+          X-Forwarded-Host: "httpbin.org" # Adds
         customResponseHeaders:
           X-Custom-Response-Header: "value" # Remove
     https-redirectscheme:
