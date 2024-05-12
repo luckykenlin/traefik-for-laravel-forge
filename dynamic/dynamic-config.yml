@@ -14,7 +14,7 @@ http:
       loadBalancer:
         serversTransport: insecureTransport
         servers:
-          - url: "http://129.80.104.229:80"
+          - url: "http://wms.easywms.app"
         passHostHeader: true
 
   serversTransports:
