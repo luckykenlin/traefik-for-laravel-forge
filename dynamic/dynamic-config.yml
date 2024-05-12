@@ -20,8 +20,6 @@ http:
       headers:
         customRequestHeaders:
           X-Forwarded-Host: "www.0degreect.com" # Adds
-        customResponseHeaders:
-          X-Custom-Response-Header: "value" # Remove
 
     redirect-to-https:
       redirectScheme:
