@@ -7,7 +7,7 @@ http:
       middlewares:
         - traefik-auth
         - default-headers
-        - https-redirect
+        - https-redirects
       service: api@internal
     easy-wms:
       rule: Host(`abc.lkkus.app`)
