@@ -7,6 +7,7 @@ http:
       rule: "Host(`abc.lkkus.app`)"
       middlewares:
         - https-redirectscheme
+      tls: {}
       service: easywms
 
   #endregion
@@ -15,16 +16,10 @@ http:
     easywms:
       loadBalancer:
         servers:
-          - url: "https://luckykenlin.github.io/livewire-tables"
+          - url: "https://wms.easywms.app"
         passHostHeader: true
   #endregion
   middlewares:
-    testHeader:
-      headers:
-        customRequestHeaders:
-          X-Forwarded-Host: "luckykenlin.github.io/livewire-tables" # Adds
-        customResponseHeaders:
-          X-Custom-Response-Header: "value" # Remove
     https-redirectscheme:
       redirectScheme:
         scheme: https
