@@ -4,22 +4,14 @@ http:
       entryPoints:
         - "https"
       rule: "Host(`abc.lkkus.app`)"
-      middlewares:
-        - testHeader
       tls: {}
       service: easywms
 
   services:
     easywms:
       loadBalancer:
-        serversTransport: insecureTransport
         servers:
           - url: "https://wms.easywms.app"
-        passHostHeader: true
-
-  serversTransports:
-    insecureTransport:
-      insecureSkipVerify: true
 
   middlewares:
     testHeader:
