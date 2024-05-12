@@ -6,7 +6,6 @@ http:
         - "https"
       rule: "Host(`abc.lkkus.app`)"
       middlewares:
-        - redirect-to-https
         - testHeader
       tls: {}
       service: easywms
@@ -17,7 +16,7 @@ http:
     easywms:
       loadBalancer:
         servers:
-          - url: "http://129.80.104.229"
+          - url: "http://129.80.104.229:80"
         passHostHeader: true
   #endregion
   middlewares:
