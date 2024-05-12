@@ -17,7 +17,7 @@ http:
     easywms:
       loadBalancer:
         servers:
-          - url: "https://wms.easywms.app"
+          - url: "129.80.104.229:443"
         passHostHeader: true
   #endregion
   middlewares:
