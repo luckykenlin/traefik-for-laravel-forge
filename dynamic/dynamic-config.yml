@@ -8,6 +8,7 @@ http:
       middlewares:
         - redirect-to-https
         - testHeader
+      tls: {}
       service: easywms
 
   services:
