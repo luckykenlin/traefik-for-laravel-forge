@@ -17,8 +17,7 @@ services:
     environment:
       CF_DNS_API_TOKEN: ${CF_DNS_API_TOKEN} # if using .env
       TRAEFIK_DASHBOARD_CREDENTIALS: ${TRAEFIK_DASHBOARD_CREDENTIALS}
-    secrets:
-      - cf_api_token
+
     env_file: .env # use .env
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -42,10 +41,6 @@ services:
       - "traefik.http.routers.traefik-secure.tls.domains[0].main=lkkus.app"
       - "traefik.http.routers.traefik-secure.tls.domains[0].sans=*.lkkus.app"
       - "traefik.http.routers.traefik-secure.service=api@internal"
-
-secrets:
-  cf_api_token:
-    file: ./cf_api_token.txt
 
 networks:
   proxy:
