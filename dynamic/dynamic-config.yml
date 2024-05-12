@@ -1,10 +1,12 @@
 http:
   routers:
-    easywms:
+    easy-wms:
       entryPoints:
+        - "http"
         - "https"
       rule: "Host(`abc.lkkus.app`)"
       middlewares:
+        - redirect-to-https
         - testHeader
       service: easywms
 
@@ -12,7 +14,7 @@ http:
     easywms:
       loadBalancer:
         servers:
-          - url: "https://wms.easywms.app/"
+          - url: "https://wms.easywms.app"
 
   middlewares:
     testHeader:
