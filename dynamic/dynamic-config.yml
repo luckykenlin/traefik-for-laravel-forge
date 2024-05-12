@@ -6,7 +6,7 @@ http:
         - "https"
       rule: "Host(`abc.lkkus.app`)"
       middlewares:
-        - testHeader
+        - securityHeaders
         - https-redirectscheme
       tls: {}
       service: easywms
@@ -21,12 +21,25 @@ http:
         passHostHeader: true
   #endregion
   middlewares:
-    testHeader:
+    securityHeaders:
       headers:
-        customRequestHeaders:
-          X-Forwarded-Host: "easywms.app" # Adds
         customResponseHeaders:
-          X-Custom-Response-Header: "value" # Remove
+          X-Robots-Tag: "none,noarchive,nosnippet,notranslate,noimageindex"
+          X-Forwarded-Proto: "https"
+          server: ""
+        sslProxyHeaders:
+          X-Forwarded-Proto: https
+        referrerPolicy: "same-origin"
+        hostsProxyHeaders:
+          - "X-Forwarded-Host"
+        customRequestHeaders:
+          X-Forwarded-Proto: "https"
+        contentTypeNosniff: true
+        browserXssFilter: true
+        forceSTSHeader: true
+        stsIncludeSubdomains: true
+        stsSeconds: 63072000
+        stsPreload: true
     https-redirectscheme:
       redirectScheme:
         scheme: https
