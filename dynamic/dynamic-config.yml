@@ -11,13 +11,13 @@ http:
     easywms:
       loadBalancer:
         servers:
-          - url: "https://wms.easywms.app"
+          - url: "https://www.0degreect.com/"
 
   middlewares:
     testHeader:
       headers:
         customRequestHeaders:
-          X-Forwarded-Host: "wms.easywms.app" # Adds
+          X-Forwarded-Host: "www.0degreect.com" # Adds
         customResponseHeaders:
           X-Custom-Response-Header: "value" # Remove
 
