@@ -32,7 +32,7 @@ http:
           sslProxyHeaders:
             X-Forwarded-Proto: "https"
           hostsProxyHeaders:
-            - "X-Forwarded-Host"
+            X-Forwarded-Host: "wms.easywms.app"
           customRequestHeaders:
             X-Forwarded-Proto: "https"
           contentTypeNosniff: true # X-Content-Type-Options
