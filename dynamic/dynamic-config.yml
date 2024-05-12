@@ -1,33 +1,27 @@
 http:
+  #region routers
   routers:
-    dashboard:
-      rule: Host(`traffic.lkkus.app`)
+    easywms:
       entryPoints:
         - "https"
+      rule: "Host(`abc.lkkus.app`)"
       middlewares:
-        - traefik-auth
         - default-headers
-        - https-redirects
-      service: api@internal
-    easy-wms:
-      rule: Host(`abc.lkkus.app`)
-      entryPoints:
-        - "https"
+        - https-redirectscheme
+      tls: {}
       service: easywms
 
+  #endregion
+  #region services
   services:
     easywms:
       loadBalancer:
         servers:
-          - url: https://wms.easywms.app
+          - url: "https:wms.easywms.app"
         passHostHeader: true
-
+  #endregion
   middlewares:
-    traefik-auth:
-      basicAuth:
-        users:
-          - "username:$2y$05$DBZNAuQXry6I9mtSKfrRQO975oGev0dzwaJd8qtuVTaSCLRDIABYi"
-    https-redirects:
+    https-redirectscheme:
       redirectScheme:
         scheme: https
         permanent: true
