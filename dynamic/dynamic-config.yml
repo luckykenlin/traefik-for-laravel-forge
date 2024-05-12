@@ -15,13 +15,13 @@ http:
     easywms:
       loadBalancer:
         servers:
-          - url: "https://66410457bcb7cefe47800de4--phenomenal-granita-c6723f.netlify.app"
+          - url: "https://httpbin.org"
 
   middlewares:
     testHeader:
       headers:
         customRequestHeaders:
-          X-Forwarded-Host: "66410457bcb7cefe47800de4--phenomenal-granita-c6723f.netlify.app" # Adds
+          X-Forwarded-Host: "httpbin.org" # Adds
 
     redirect-to-https:
       redirectScheme:
