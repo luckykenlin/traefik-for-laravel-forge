@@ -2,6 +2,9 @@ http:
   routers:
     routers:
       dashboard:
+        entryPoints:
+          - "websecure"
+          - "other"
         rule: Host(`${TRAEFIK_DASHBOARD_HOST}`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
         service: api@internal
     easy-wms:
