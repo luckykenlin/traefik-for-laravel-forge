@@ -15,7 +15,7 @@ http:
     easywms:
       loadBalancer:
         servers:
-          - url: "https://httpbin.org"
+          - url: "https://wms.easywms.app"
 
   middlewares:
     testHeader:
