@@ -26,7 +26,7 @@ http:
     traefik-auth:
       basicAuth:
         users:
-          - ${TRAEFIK_DASHBOARD_CREDENTIALS}
+          - "username:$2y$05$DBZNAuQXry6I9mtSKfrRQO975oGev0dzwaJd8qtuVTaSCLRDIABYi"
     https-redirects:
       redirectScheme:
         scheme: https
