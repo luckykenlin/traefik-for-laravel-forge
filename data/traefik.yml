@@ -1,3 +1,18 @@
+global:
+  checkNewVersion: true
+  sendAnonymousUsage: true
+
+entryPoints:
+  http:
+    address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: https
+          scheme: https
+  https:
+    address: ":443"
+
 providers:
   docker:
     endpoint: "unix:///var/run/docker.sock"
@@ -11,24 +26,13 @@ api:
   debug: true
   insecure: true
 
-entryPoints:
-  http:
-    address: ":80"
-    http:
-      redirections:
-        entryPoint:
-          to: https
-          scheme: https
-  https:
-    address: ":443"
-
 serversTransport:
   insecureSkipVerify: true
 
 certificatesResolvers:
   cloudflare:
     acme:
-      email: ${LETS_ENCRYPT_EMAIL}
+      email: luckykenlin@gmail.com
       storage: acme.json
       caServer: https://acme-v02.api.letsencrypt.org/directory # prod (default)
 #      caServer: https://acme-staging-v02.api.letsencrypt.org/directory # staging
