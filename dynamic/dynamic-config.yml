@@ -4,6 +4,8 @@ http:
       entryPoints:
         - "https"
       rule: "Host(`abc.lkkus.app`)"
+      middlewares:
+        - testHeader
       service: easywms
 
   services:
@@ -13,10 +15,10 @@ http:
           - url: "https://wms.easywms.app/"
 
   middlewares:
-#    testHeader:
-#      headers:
-#        customRequestHeaders:
-#          X-Forwarded-Host: "wms.easywms.app" # Adds
+    testHeader:
+      headers:
+        customRequestHeaders:
+          X-Forwarded-Host: "wms.easywms.app" # Adds
 
     redirect-to-https:
       redirectScheme:
