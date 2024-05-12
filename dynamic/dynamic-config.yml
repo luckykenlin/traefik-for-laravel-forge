@@ -1,20 +1,19 @@
 http:
   routers:
-    routers:
-      dashboard:
-        entryPoints:
-          - "https"
-        rule: Host(`${TRAEFIK_DASHBOARD_HOST}`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
-        service: api@internal
-    easy-wms:
+    dashboard:
+      rule: Host(`traffic.lkkus.app`)
       entryPoints:
         - "https"
       middlewares:
         - traefik-auth
         - default-headers
         - https-redirect
-      service: easywms
+      service: api@internal
+    easy-wms:
       rule: Host(`abc.lkkus.app`)
+      entryPoints:
+        - "https"
+      service: easywms
 
   services:
     easywms:
