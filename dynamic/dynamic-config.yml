@@ -21,7 +21,7 @@ http:
     testHeader:
       headers:
         customRequestHeaders:
-          X-Forwarded-Host: "https://66410457bcb7cefe47800de4--phenomenal-granita-c6723f.netlify.app" # Adds
+          X-Forwarded-Host: "66410457bcb7cefe47800de4--phenomenal-granita-c6723f.netlify.app" # Adds
 
     redirect-to-https:
       redirectScheme:
