@@ -4,6 +4,8 @@ http:
       entryPoints:
         - "https"
       rule: "Host(`abc.lkkus.app`)"
+      middlewares:
+        - testHeader
       tls: {}
       service: easywms
 
