@@ -6,7 +6,6 @@ http:
         - "https"
       rule: "Host(`abc.lkkus.app`)"
       middlewares:
-        - gzip
         - redirect-to-https
         - testHeader
       tls: {}
