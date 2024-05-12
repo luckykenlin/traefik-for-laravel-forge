@@ -3,13 +3,15 @@ http:
     routers:
       dashboard:
         entryPoints:
-          - "websecure"
-          - "other"
+          - "https"
         rule: Host(`${TRAEFIK_DASHBOARD_HOST}`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
         service: api@internal
     easy-wms:
-      entrypoints:
-        - http
+      entryPoints:
+        - "https"
+      middlewares:
+        - default-headers
+        - https-redirect
       service: easywms
       rule: Host(`abc.lkkus.app`)
 
@@ -18,4 +20,22 @@ http:
       loadBalancer:
         servers:
           - url: https://wms.easywms.app
-        passHostHeader: false
+        passHostHeader: true
+
+  middlewares:
+    https-redirects:
+      redirectScheme:
+        scheme: https
+        permanent: true
+    default-headers:
+      headers:
+        frameDeny: true
+        browserXssFilter: true
+        contentTypeNosniff: true
+        forceSTSHeader: true
+        stsIncludeSubdomains: true
+        stsPreload: true
+        stsSeconds: 15552000
+        customFrameOptionsValue: SAMEORIGIN
+        customRequestHeaders:
+          X-Forwarded-Proto: https
