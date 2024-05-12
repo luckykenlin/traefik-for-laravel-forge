@@ -10,6 +10,7 @@ http:
       entryPoints:
         - "https"
       middlewares:
+        - traefik-auth
         - default-headers
         - https-redirect
       service: easywms
@@ -23,6 +24,10 @@ http:
         passHostHeader: true
 
   middlewares:
+    traefik-auth:
+      basicAuth:
+        users:
+          - ${TRAEFIK_DASHBOARD_CREDENTIALS}
     https-redirects:
       redirectScheme:
         scheme: https
