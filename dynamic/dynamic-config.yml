@@ -17,7 +17,7 @@ http:
         serversTransport: insecureTransport
         servers:
           - url: "https://129.80.104.229:443"
-        passHostHeader: true
+        passHostHeader: false
 
   serversTransports:
     insecureTransport:
