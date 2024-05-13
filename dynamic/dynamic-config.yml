@@ -14,7 +14,7 @@ http:
     easywms:
       loadBalancer:
         servers:
-          - url: "https://vimeo.com"
+          - url: "http://141.155.34.252"
         passHostHeader: true
 
   middlewares:
