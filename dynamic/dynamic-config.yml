@@ -15,6 +15,7 @@ http:
       loadBalancer:
         servers:
           - url: "https://www.yahoo.com"
+        passHostHeader: true
 
   middlewares:
     testHeader:
