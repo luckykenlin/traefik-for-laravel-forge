@@ -14,7 +14,7 @@ http:
     easywms:
       loadBalancer:
         servers:
-          - url: "http://141.155.34.252"
+          - url: "http://129.80.104.229"
         passHostHeader: true
 
   middlewares:
