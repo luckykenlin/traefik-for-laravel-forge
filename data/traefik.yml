@@ -1,30 +1,76 @@
+# Traefik global configuration
 global:
   checkNewVersion: true
   sendAnonymousUsage: true
 
-providers:
-  docker:
-    endpoint: "unix:///var/run/docker.sock"
-    exposedByDefault: false
-  file:
-    directory: /dynamic
-    watch: true
-
+# Enable traefik ui dashboard
 api:
   dashboard: true
   debug: true
 
+providers:
+  providersThrottleDuration: 2s
+
+  # Docker provider for connecting all apps that are inside of the docker network
+  docker:
+    watch: true
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
+
+  # File provider for connecting things that are outside of docker / defining middleware
+  file:
+    directory: /dynamic
+    watch: true
+
+# Traefik entryPoints (network ports) configuration
 entryPoints:
+  # Not used in apps, but redirect everything from HTTP to HTTPS
   http:
     address: ":80"
+    forwardedHeaders:
+      trustedIPs: &trustedIps
+        # Start of Cloudflare public IP list for HTTP requests, remove this if you don't use it; https://www.cloudflare.com/de-de/ips/
+        - 103.21.244.0/22
+        - 103.22.200.0/22
+        - 103.31.4.0/22
+        - 104.16.0.0/13
+        - 104.24.0.0/14
+        - 108.162.192.0/18
+        - 131.0.72.0/22
+        - 141.101.64.0/18
+        - 162.158.0.0/15
+        - 172.64.0.0/13
+        - 173.245.48.0/20
+        - 188.114.96.0/20
+        - 190.93.240.0/20
+        - 197.234.240.0/22
+        - 198.41.128.0/17
+        - 2400:cb00::/32
+        - 2606:4700::/32
+        - 2803:f800::/32
+        - 2405:b500::/32
+        - 2405:8100::/32
+        - 2a06:98c0::/29
+        - 2c0f:f248::/32
+        # End of Cloudflare public IP list
     http:
       redirections:
         entryPoint:
           to: https
           scheme: https
+
+  # HTTPS endpoint, with domain wildcard
   https:
     address: ":443"
+    forwardedHeaders:
+      # Reuse list of Cloudflare Trusted IP's above for HTTPS requests
+      trustedIPs: *trustedIps
+      http:
+        tls:
+          # Generate a wildcard domain certificate
+          certResolver: cloudflare
 
+# The setting below is to allow insecure backend connections.
 serversTransport:
   insecureSkipVerify: true
 
@@ -34,7 +80,7 @@ certificatesResolvers:
       email: luckykenlin@gmail.com
       storage: acme.json
       caServer: https://acme-v02.api.letsencrypt.org/directory # prod (default)
-#      caServer: https://acme-staging-v02.api.letsencrypt.org/directory # staging
+      #      caServer: https://acme-staging-v02.api.letsencrypt.org/directory # staging
       dnsChallenge:
         provider: cloudflare
         #disablePropagationCheck: true # uncomment this if you have issues pulling certificates through cloudflare, By setting this flag to true disables the need to wait for the propagation of the TXT record to all authoritative name servers.
@@ -42,7 +88,24 @@ certificatesResolvers:
         resolvers:
           - "1.1.1.1:53"
           - "1.0.0.1:53"
+
+# Log level INFO|DEBUG|ERROR
 log:
   level: DEBUG
 
-accessLog: {}
+accessLog:
+  filePath: "/logs/traefik.log"
+  format: json
+  filters:
+    statusCodes:
+      #  - "200" # log successful http requests
+      - "400-599" # log failed http requests
+    #retryAttempts: true
+    #minDuration: "10ms"
+  # collect logs as in-memory buffer before writing into log file
+  bufferingSize: 0
+  fields:
+    headers:
+      defaultMode: drop # drop all headers per default
+      names:
+        User-Agent: keep # log user agent strings

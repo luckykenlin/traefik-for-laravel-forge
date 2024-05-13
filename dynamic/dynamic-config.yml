@@ -1,16 +1,24 @@
 http:
   routers:
-    netlify:
-      entryPoints:
-        - "http"
-        - "https"
-      rule: "Host(`aaa.lkkus.app`)"
-      tls: {}
-      service: netlify
+#    netlify:
+#      entryPoints:
+#        - "http"
+#        - "https"
+#      rule: "Host(`aaa.lkkus.app`)"
+#      tls: {}
+#      middlewares:
+#        - https-redirect
+#      service: netlify
 
   services:
-    netlify:
-      loadBalancer:
-        servers:
-          - url: https://easywms.app #SSG website hosting via netlify
-        passHostHeader: false
+  #    netlify:
+  #      loadBalancer:
+  #        servers:
+  #          - url: https://easywms.app #SSG website hosting via netlify
+  #        passHostHeader: false
+
+  middlewares:
+    https-redirect:
+      redirectScheme:
+        scheme: https
+        permanent: true
