@@ -4,7 +4,6 @@ http:
       entryPoints:
         - "https"
       rule: "Host(`aaa.lkkus.app`)"
-      tls: { }
       service: netlify
 
   services:
