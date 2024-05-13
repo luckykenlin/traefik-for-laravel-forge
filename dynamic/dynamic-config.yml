@@ -20,7 +20,7 @@ http:
     addHost:
       headers:
         customRequestHeaders:
-          Host: www.ecosia.org
+          Host: wms.easywms.app
     redirect-to-https:
       redirectScheme:
         scheme: https
