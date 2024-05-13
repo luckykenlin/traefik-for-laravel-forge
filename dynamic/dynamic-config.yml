@@ -12,5 +12,5 @@ http:
     easywms:
       loadBalancer:
         servers:
-          - url: https://wms.easywms.app
+          - url: https://www.0degreect.com
         passHostHeader: false
