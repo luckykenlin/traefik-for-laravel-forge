@@ -13,7 +13,6 @@ http:
       loadBalancer:
         servers:
           - url: https://wms.easywms.app
-        passHostHeader: true
 
 tls:
   options:
