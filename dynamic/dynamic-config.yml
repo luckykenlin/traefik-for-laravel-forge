@@ -2,12 +2,9 @@ http:
   routers:
     netlify:
       entryPoints:
-        - "http"
         - "https"
       rule: "Host(`aaa.lkkus.app`)"
       tls: {}
-      middlewares:
-        - https-redirect
       service: netlify
 
   services:
