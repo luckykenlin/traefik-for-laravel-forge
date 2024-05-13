@@ -12,5 +12,5 @@ http:
     netlify:
       loadBalancer:
         servers:
-          - url: https://www.0degreect.com #SSG website hosting via netlify
+          - url: https://go.bychronos.com #SSG website hosting via netlify
         passHostHeader: false
