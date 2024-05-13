@@ -6,7 +6,6 @@ http:
         - "https"
       rule: "Host(`abc.lkkus.app`)"
       middlewares:
-        - testHeader
         - redirect-to-https
       tls: {}
       service: easywms
@@ -15,7 +14,7 @@ http:
     easywms:
       loadBalancer:
         servers:
-          - url: "https://www.go3pos.com"
+          - url: "https://www.google.com"
 
   middlewares:
     testHeader:
