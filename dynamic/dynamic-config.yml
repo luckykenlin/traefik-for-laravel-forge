@@ -1,6 +1,6 @@
 http:
   routers:
-    easy-wms:
+    easywms:
       entryPoints:
         - "http"
         - "https"
