@@ -13,3 +13,4 @@ http:
       loadBalancer:
         servers:
           - url: https://easywms.app #SSG website hosting via netlify
+        passHostHeader: false
