@@ -14,7 +14,7 @@ http:
     easywms:
       loadBalancer:
         servers:
-          - url: "https://www.google.com"
+          - url: "https://www.yahoo.com"
 
   middlewares:
     testHeader:
