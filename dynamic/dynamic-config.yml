@@ -14,7 +14,7 @@ http:
     easywms:
       loadBalancer:
         servers:
-          - url: "https://httpbin.org"
+          - url: "https://www.go3pos.com"
 
   middlewares:
     testHeader:
