@@ -7,7 +7,6 @@ http:
       rule: "Host(`abc.lkkus.app`)"
       tls: {}
       middlewares:
-        - addHost
         - redirect-to-https
       service: easywms
 
@@ -16,6 +15,7 @@ http:
       loadBalancer:
         servers:
           - url: https://wms.easywms.app
+        passHostHeader: true
 
   middlewares:
     addHost:
