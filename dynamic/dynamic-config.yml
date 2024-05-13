@@ -6,6 +6,7 @@ http:
         - "https"
       rule: "Host(`abc.lkkus.app`)"
       middlewares:
+        - testHeader
         - redirect-to-https
       tls: {}
       service: easywms
@@ -31,7 +32,7 @@ http:
           sslProxyHeaders:
             X-Forwarded-Proto: "https"
           hostsProxyHeaders:
-            X-Forwarded-Host: "wms.easywms.app"
+            X-Forwarded-Host: "www.go3pos.com"
           customRequestHeaders:
             X-Forwarded-Proto: "https"
           contentTypeNosniff: true # X-Content-Type-Options
