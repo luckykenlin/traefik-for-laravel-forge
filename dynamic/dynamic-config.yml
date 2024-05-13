@@ -1,18 +1,18 @@
 http:
   routers:
-#    netlify:
-#      entryPoints:
-#        - "https"
-#      rule: "Host(`aaa.lkkus.app`)"
-#      tls: {}
-#      service: netlify
+    netlify:
+      entryPoints:
+        - "https"
+      rule: "Host(`aaa.lkkus.app`)"
+      tls: {}
+      service: netlify
 
   services:
-#    netlify:
-#      loadBalancer:
-#        servers:
-#          - url: "https://taupe-chaja-362037.netlify.app/" #SSG website hosting via netlify
-#        passHostHeader: false
+    netlify:
+      loadBalancer:
+        servers:
+          - url: "https://taupe-chaja-362037.netlify.app/" #SSG website hosting via netlify
+        passHostHeader: false
 
   middlewares:
     rate-limit:
