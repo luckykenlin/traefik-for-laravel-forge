@@ -8,16 +8,19 @@ http:
       middlewares:
         - redirect-to-https
       tls: {}
-      serversTransport:
-        insecureSkipVerify: true
       service: easywms
 
   services:
     easywms:
       loadBalancer:
+        serversTransport: insecureTransport
         servers:
           - url: "https://129.80.104.229:443"
         passHostHeader: true
+
+  serversTransports:
+    insecureTransport:
+      insecureSkipVerify: true
 
   middlewares:
     redirect-to-https:
