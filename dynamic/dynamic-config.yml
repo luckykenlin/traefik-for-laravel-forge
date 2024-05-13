@@ -4,7 +4,7 @@ http:
       entryPoints:
         - "http"
         - "https"
-      rule: "Host(`abc.lkkus.app`)"
+      rule: "Host(`lkkus.app`)"
       tls: {}
       service: easywms
 
