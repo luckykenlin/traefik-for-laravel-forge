@@ -4,14 +4,14 @@ http:
       entryPoints:
         - "https"
       rule: "Host(`aaa.lkkus.app`)"
-      tls: {}
+      tls: { }
       service: netlify
 
   services:
     netlify:
       loadBalancer:
         servers:
-          - url: https://easywms.app #SSG website hosting via netlify
+          - url: https://taupe-chaja-362037.netlify.app/ #SSG website hosting via netlify
         passHostHeader: false
 
   middlewares:
