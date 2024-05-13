@@ -6,8 +6,6 @@ http:
         - "https"
       rule: "Host(`abc.lkkus.app`)"
       middlewares:
-        - proxy
-        - testHeader
         - redirect-to-https
       tls: {}
       service: easywms
@@ -25,15 +23,6 @@ http:
       insecureSkipVerify: true
 
   middlewares:
-    proxy:
-      proxy:
-        - url: "wms.easywms.app"
-          changeOrigin: true
-    testHeader:
-      headers:
-        customRequestHeaders:
-          X-Forwarded-Host: "wms.easywms.app" # Adds
-          Host: "wms.easywms.app" # Adds
     redirect-to-https:
       redirectScheme:
         scheme: https
