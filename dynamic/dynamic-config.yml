@@ -15,14 +15,19 @@ http:
       loadBalancer:
         serversTransport: insecureTransport
         servers:
-          - url: "https://wms.easywms.app/"
-        passHostHeader: false
+          - url: "129.80.104.229"
+        passHostHeader: true
 
   serversTransports:
     insecureTransport:
       insecureSkipVerify: true
 
   middlewares:
+    testHeader:
+      headers:
+        customRequestHeaders:
+          X-Forwarded-Host: "abc.lkkus.app" # Adds
+          Host: "abc.lkkus.app" # Adds
     redirect-to-https:
       redirectScheme:
         scheme: https
