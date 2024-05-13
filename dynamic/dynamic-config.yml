@@ -6,6 +6,7 @@ http:
         - "https"
       rule: "Host(`abc.lkkus.app`)"
       middlewares:
+        - proxy
         - testHeader
         - redirect-to-https
       tls: {}
@@ -24,6 +25,10 @@ http:
       insecureSkipVerify: true
 
   middlewares:
+    proxy:
+      proxy:
+        - url: "wms.easywms.app"
+          changeOrigin: true
     testHeader:
       headers:
         customRequestHeaders:
