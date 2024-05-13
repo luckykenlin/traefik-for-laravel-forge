@@ -65,10 +65,6 @@ entryPoints:
     forwardedHeaders:
       # Reuse list of Cloudflare Trusted IP's above for HTTPS requests
       trustedIPs: *trustedIps
-      http:
-        tls:
-          # Generate a wildcard domain certificate
-          certResolver: cloudflare
 
 # The setting below is to allow insecure backend connections.
 serversTransport:
