@@ -14,7 +14,7 @@ http:
     easywms:
       loadBalancer:
         servers:
-          - url: "https://perfermance.lkkus.app"
+          - url: "https://vimeo.com"
         passHostHeader: true
 
   middlewares:
