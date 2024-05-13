@@ -21,7 +21,7 @@ http:
     addHost:
       headers:
         customRequestHeaders:
-          Host: wms.easywms.app
+          Host: abc.lkkus.app
     redirect-to-https:
       redirectScheme:
         scheme: https
