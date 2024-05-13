@@ -21,7 +21,7 @@ http:
     addHost:
       headers:
         customRequestHeaders:
-          Host: abc.lkkus.app
+          X-Forwarded-Host: wms.easywms.app
     redirect-to-https:
       redirectScheme:
         scheme: https
