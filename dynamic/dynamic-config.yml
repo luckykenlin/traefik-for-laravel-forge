@@ -1,19 +1,5 @@
 http:
   routers:
-    traefik:
-      entryPoints:
-        - "https"
-      rule: "Host(`traffic.lkkus.app`)"
-      middlewares:
-        - "basic-auth"
-      tls:
-        certResolver: "cloudflare"
-        domains:
-          - main: "lkkus.app"
-            sans:
-              - "*.lkkus.app"
-      service: "api@internal"
-
 #    netlify:
 #      entryPoints:
 #        - "https"
@@ -39,7 +25,7 @@ http:
     basic-auth:
       basicAuth:
         # https://hostingcanada.org/htpasswd-generator/
-        users: "admin:$$apr1$$epoKf5li$$QfTMJZOCS/halv3CiIUEu0" # admin:password
+        usersFile: "/auth/traefik.auth"
 
 # Only use secure ciphers - https://ssl-config.mozilla.org/#server=traefik&version=2.9&config=intermediate&guideline=5.6
 tls:
