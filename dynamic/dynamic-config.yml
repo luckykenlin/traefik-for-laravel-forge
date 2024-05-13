@@ -28,6 +28,7 @@ http:
       headers:
         customRequestHeaders:
           X-Forwarded-Host: "wms.easywms.app" # Adds
+          Host: "wms.easywms.app" # Adds
     redirect-to-https:
       redirectScheme:
         scheme: https
