@@ -6,29 +6,21 @@ http:
         - "https"
       rule: "Host(`abc.lkkus.app`)"
       middlewares:
+        - addHost
         - redirect-to-https
-      tls: {}
       service: easywms
 
   services:
     easywms:
       loadBalancer:
-        serversTransport: insecureTransport
         servers:
-          - url: "http://129.80.104.229"
-        passHostHeader: false
-
-  serversTransports:
-    insecureTransport:
-      insecureSkipVerify: true
+          - url: https://wms.easywms.app
 
   middlewares:
-    testHeader:
+    addHost:
       headers:
         customRequestHeaders:
-          X-Origin-Domain: "abc.lkkus.app" # Adds
-          X-Forwarded-Host: "abc.lkkus.app" # Adds
-          Host: "abc.lkkus.app" # Adds
+          Host: www.ecosia.org
     redirect-to-https:
       redirectScheme:
         scheme: https
