@@ -1,16 +1,16 @@
 http:
   routers:
-    easywms:
+    netlify:
       entryPoints:
         - "http"
         - "https"
       rule: "Host(`lkkus.app`)"
       tls: {}
-      service: easywms
+      service: netlify
 
   services:
-    easywms:
+    netlify:
       loadBalancer:
         servers:
-          - url: https://www.0degreect.com
+          - url: https://www.0degreect.com #SSG website hosting via netlify
         passHostHeader: false
