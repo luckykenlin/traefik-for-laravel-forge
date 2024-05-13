@@ -16,7 +16,7 @@ http:
       loadBalancer:
         serversTransport: insecureTransport
         servers:
-          - url: "129.80.104.229:443"
+          - url: "http://129.80.104.229"
         passHostHeader: false
 
   serversTransports:
