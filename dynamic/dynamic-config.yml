@@ -6,9 +6,6 @@ http:
         - "https"
       rule: "Host(`abc.lkkus.app`)"
       tls: {}
-      middlewares:
-        - addHost
-        - redirect-to-https
       service: easywms
 
   services:
@@ -18,20 +15,9 @@ http:
           - url: https://wms.easywms.app
         passHostHeader: true
 
-  middlewares:
-    addHost:
-      headers:
-        customRequestHeaders:
-          X-Forwarded-Host: abc.lkkus.app
-          Host: abc.lkkus.app
-    redirect-to-https:
-      redirectScheme:
-        scheme: https
-
 tls:
   options:
     default:
-      #sniStrict: true # prevents leaking default cert; see https://doc.traefik.io/traefik/v2.2/https/tls/#strict-sni-checking
       minVersion: VersionTLS12
       cipherSuites:
         - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
