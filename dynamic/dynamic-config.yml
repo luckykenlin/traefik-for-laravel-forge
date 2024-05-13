@@ -27,7 +27,7 @@ http:
     testHeader:
       headers:
         customRequestHeaders:
-          Host: "wms.easywms.app" # Adds
+          Host: "easywms.app" # Adds
     redirect-to-https:
       redirectScheme:
         scheme: https
