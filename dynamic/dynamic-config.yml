@@ -6,7 +6,6 @@ http:
         - "https"
       rule: "Host(`abc.lkkus.app`)"
       middlewares:
-        - testHeader
         - redirect-to-https
       tls: {}
       service: easywms
