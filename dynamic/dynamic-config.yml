@@ -7,6 +7,7 @@ http:
       rule: "Host(`abc.lkkus.app`)"
       tls: {}
       middlewares:
+        - addHost
         - redirect-to-https
       service: easywms
 
@@ -21,7 +22,7 @@ http:
     addHost:
       headers:
         customRequestHeaders:
-          X-Forwarded-Host: wms.easywms.app
+          X-Forwarded-Host: abc.lkkus.app
           Host: abc.lkkus.app
     redirect-to-https:
       redirectScheme:
