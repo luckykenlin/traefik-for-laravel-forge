@@ -34,8 +34,8 @@ services:
       - "traefik.http.routers.traefik.middlewares=traefik-auth"
       - "traefik.http.routers.traefik.tls=true"
       - "traefik.http.routers.traefik.tls.certResolver=cloudflare"
-#      - "traefik.http.routers.traefik.tls.domains[0].main=lkkus.app"
-#      - "traefik.http.routers.traefik.tls.domains[0].sans=*.lkkus.app"
+      - "traefik.http.routers.traefik.tls.domains[0].main=lkkus.app"
+      - "traefik.http.routers.traefik.tls.domains[0].sans=*.lkkus.app"
       - "traefik.http.routers.traefik.service=api@internal"
 
 networks:
