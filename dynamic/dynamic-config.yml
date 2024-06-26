@@ -3,7 +3,7 @@ http:
     netlify:
       entryPoints:
         - "https"
-      rule: "Host(`aaa.lkkus.app`)"
+      rule: "Host(`lkkus.app`)"
       tls: {}
       service: netlify
 
