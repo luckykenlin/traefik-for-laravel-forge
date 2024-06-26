@@ -17,7 +17,7 @@ services:
       # - 443:443/udp # Uncomment if you want HTTP3
     environment:
       CF_DNS_API_TOKEN: ${CF_DNS_API_TOKEN}
-      TRAEFIK_CERTIFICATESRESOLVERS_LETSENCRYPT_ACME_EMAIL: ${LETS_ENCRYPT_EMAIL}
+      TRAEFIK_CERTIFICATESRESOLVERS_LETSENCRYPT_ACME_EMAIL: luckykenlin@gmail.com
 
     env_file: .env # use .env
     volumes:
