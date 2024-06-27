@@ -11,7 +11,7 @@ http:
     netlify:
       loadBalancer:
         servers:
-          - url: "https://go.bychronos.com/l/demo802304/" #SSG website hosting via netlify
+          - url: "https://prosperity-construction.ezsite.app/" #SSG website hosting via netlify
         passHostHeader: false
 
   middlewares:
