@@ -97,6 +97,20 @@ Step 2. Configure ENV variables, and set Traefik Dashboard password
 ./Taskfile auth username password
 ```
 
+Step 3. Permission
+```bash
+# Access the container
+docker exec -it traefik /bin/sh
+
+# Navigate to the directory and change permissions
+cd /data
+chmod 600 acme.json
+
+# Exit the container
+exit
+
+```
+
 ## License
 
 The source code for the site is licensed under the MIT license, which you can find in
