@@ -3,15 +3,14 @@ http:
     netlify:
       entryPoints:
         - "https"
-      rule: "Host(`lkkus.app`)"
-      tls: {}
+      rule: "Host(`demo.lkkus.app`)"
       service: netlify
 
   services:
     netlify:
       loadBalancer:
         servers:
-          - url: "https://go.bychronos.com/" #SSG website hosting via netlify
+          - url: "https://imaginative-meerkat-397e19.netlify.app" #SSG website hosting via netlify
         passHostHeader: false
 
   middlewares:
@@ -21,6 +20,7 @@ http:
         period: 1
         burst: 100
 
-    add-foo:
-      addPrefix:
-        prefix: "/l/demo802304"
+  # allow self-signed certificates for proxied web services
+  serversTransports:
+    insecureTransport:
+      insecureSkipVerify: true
