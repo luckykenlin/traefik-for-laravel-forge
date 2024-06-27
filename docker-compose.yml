@@ -17,7 +17,7 @@ services:
       # - 443:443/udp # Uncomment if you want HTTP3
     environment:
       CF_DNS_API_TOKEN: ${CF_DNS_API_TOKEN}
-      TRAEFIK_CERTIFICATESRESOLVERS_LETSENCRYPT_ACME_EMAIL: luckykenlin@gmail.com
+      TRAEFIK_CERTIFICATESRESOLVERS_LETSENCRYPT_ACME_EMAIL: ${LETS_ENCRYPT_EMAIL}
 
     env_file: .env # use .env
     volumes:
@@ -28,12 +28,14 @@ services:
       - ./dynamic:/dynamic
     labels:
       - "traefik.enable=true"
+      - "traefik.http.middlewares.traefik-auth.basicAuth.users=${TRAEFIK_DASHBOARD_CREDENTIALS}"
       - "traefik.http.routers.traefik.entryPoints=https"
       - "traefik.http.routers.traefik.rule=Host(`${TRAEFIK_DASHBOARD_HOST}`)"
+      - "traefik.http.routers.traefik.middlewares=traefik-auth"
       - "traefik.http.routers.traefik.tls=true"
       - "traefik.http.routers.traefik.tls.certResolver=cloudflare"
-      - "traefik.http.routers.traefik.tls.domains[0].main=lkkus.app"
-      - "traefik.http.routers.traefik.tls.domains[0].sans=*.lkkus.app"
+      - "traefik.http.routers.traefik.tls.domains[0].main=${FALLBACK_DOMAIN}"
+      - "traefik.http.routers.traefik.tls.domains[0].sans=*.${FALLBACK_DOMAIN}"
       - "traefik.http.routers.traefik.service=api@internal"
 
 networks:
