@@ -6,8 +6,6 @@ http:
       rule: "Host(`lkkus.app`)"
       tls: {}
       service: netlify
-      middlewares:
-        - "add-foo"
 
   services:
     netlify:
