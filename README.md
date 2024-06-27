@@ -93,6 +93,7 @@ Refer to (deploy script)[./Taskfile], in function `baseDeployScript`
 Step 2. Configure ENV variables, and set Traefik Dashboard password
 !!! Recommended doing via SSH, even you could fdo it from Forge's UI "Run command"
 ```
+chmod +x ./Taskfile
 ./Taskfile copyEnv
 ./Taskfile auth username password
 ```
@@ -103,9 +104,9 @@ Step 3. Permission
 docker exec -it traefik /bin/sh
 
 # Navigate to the directory and change permissions
-cd /data
 chmod 600 acme.json
-chmod +x ./Taskfile
+exit
+
 # Exit the container
 exit
 
