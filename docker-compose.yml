@@ -26,9 +26,10 @@ services:
       - ./data/traefik.yml:/traefik.yml:ro
       - ./data/acme.json:/acme.json
       - ./dynamic:/dynamic
+      - ./traefik.auth:/auth/traefik.auth
     labels:
       - "traefik.enable=true"
-      - "traefik.http.middlewares.traefik-auth.basicAuth.usersfile=/traefik.auth"
+      - "traefik.http.middlewares.traefik-auth.basicAuth.usersfile=/auth/traefik.auth"
       - "traefik.http.routers.traefik.entryPoints=https"
       - "traefik.http.routers.traefik.rule=Host(`${TRAEFIK_DASHBOARD_HOST}`)"
       - "traefik.http.routers.traefik.middlewares=traefik-auth"
