@@ -105,7 +105,7 @@ docker exec -it traefik /bin/sh
 # Navigate to the directory and change permissions
 cd /data
 chmod 600 acme.json
-
+chmod +x ./Taskfile
 # Exit the container
 exit
 
