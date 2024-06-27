@@ -28,7 +28,7 @@ services:
       - ./dynamic:/dynamic
     labels:
       - "traefik.enable=true"
-      - "traefik.http.middlewares.traefik-auth.basicAuth.users=${TRAEFIK_DASHBOARD_CREDENTIALS}"
+      - "traefik.http.middlewares.traefik-auth.basicAuth.usersfile=/traefik.auth"
       - "traefik.http.routers.traefik.entryPoints=https"
       - "traefik.http.routers.traefik.rule=Host(`${TRAEFIK_DASHBOARD_HOST}`)"
       - "traefik.http.routers.traefik.middlewares=traefik-auth"
