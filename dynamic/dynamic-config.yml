@@ -6,12 +6,16 @@ http:
       rule: "Host(`lkkus.app`)"
       tls: {}
       service: netlify
+      middlewares:
+        add-foo:
+          addPrefix:
+            prefix: "/l/demo802304"
 
   services:
     netlify:
       loadBalancer:
         servers:
-          - url: "https://prosperity-construction.ezsite.app/" #SSG website hosting via netlify
+          - url: "https://go.bychronos.com/" #SSG website hosting via netlify
         passHostHeader: false
 
   middlewares:
