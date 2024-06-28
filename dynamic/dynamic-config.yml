@@ -19,7 +19,7 @@ http:
       loadBalancer:
         servers:
           - url: "https://imaginative-meerkat-397e19.netlify.app" #SSG website hosting via netlify
-        passHostHeader: true
+        passHostHeader: false
 
     demo:
       loadBalancer:
