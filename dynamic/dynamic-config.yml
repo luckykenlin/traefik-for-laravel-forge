@@ -25,7 +25,7 @@ http:
       loadBalancer:
         servers:
           - url: "https://prosperity-construction.ezsite.app/" #SSG website hosting via netlify
-        passHostHeader: true
+        passHostHeader: false
 
   middlewares:
     rate-limit:
