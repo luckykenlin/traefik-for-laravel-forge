@@ -7,11 +7,26 @@ http:
       tls: true
       service: netlify
 
+    demo:
+      entryPoints:
+        - "https"
+      rule: "Host(`dingsheng.lkkus.app`)"
+      tls: true
+      service: demo
+
+
+
   services:
     netlify:
       loadBalancer:
         servers:
           - url: "https://imaginative-meerkat-397e19.netlify.app" #SSG website hosting via netlify
+        passHostHeader: false
+
+    demo:
+      loadBalancer:
+        servers:
+          - url: "https://prosperity-construction.ezsite.app/" #SSG website hosting via netlify
         passHostHeader: false
 
   middlewares:
