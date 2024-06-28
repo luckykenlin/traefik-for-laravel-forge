@@ -20,8 +20,3 @@ http:
         average: 100
         period: 1
         burst: 100
-
-  # allow self-signed certificates for proxied web services
-  serversTransports:
-    insecureTransport:
-      insecureSkipVerify: true
